@@ -54,14 +54,70 @@
 		3A9755402BCD448F00C510EB /* GetirShoppingApp */ = {
 			isa = PBXGroup;
 			children = (
-				3A9755412BCD448F00C510EB /* AppDelegate.swift */,
-				3A9755432BCD448F00C510EB /* SceneDelegate.swift */,
+				3A9755582BCD4D6E00C510EB /* Network */,
+				3A9755572BCD4A7900C510EB /* Resources */,
+				3A9755562BCD4A7200C510EB /* Modules */,
+				3A9755552BCD4A5300C510EB /* App */,
 				3A9755452BCD448F00C510EB /* ViewController.swift */,
-				3A97554A2BCD449000C510EB /* Assets.xcassets */,
 				3A97554C2BCD449000C510EB /* LaunchScreen.storyboard */,
 				3A97554F2BCD449000C510EB /* Info.plist */,
 			);
 			path = GetirShoppingApp;
+			sourceTree = "<group>";
+		};
+		3A9755552BCD4A5300C510EB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3A9755412BCD448F00C510EB /* AppDelegate.swift */,
+				3A9755432BCD448F00C510EB /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3A9755562BCD4A7200C510EB /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				3A9755592BCD53A500C510EB /* Product Listing */,
+				3A97555A2BCD53FA00C510EB /* Product Detail */,
+				3A97555B2BCD540900C510EB /* Shopping Cart */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		3A9755572BCD4A7900C510EB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3A97554A2BCD449000C510EB /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3A9755582BCD4D6E00C510EB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3A9755592BCD53A500C510EB /* Product Listing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Product Listing";
+			sourceTree = "<group>";
+		};
+		3A97555A2BCD53FA00C510EB /* Product Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Product Detail";
+			sourceTree = "<group>";
+		};
+		3A97555B2BCD540900C510EB /* Shopping Cart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Shopping Cart";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
