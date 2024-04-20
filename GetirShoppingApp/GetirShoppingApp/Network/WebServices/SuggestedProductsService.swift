@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SuggestedProductsServiceProtocol {
-    func getSuggestedProducts() async throws -> SuggestedProduct
+    func getSuggestedProducts() async throws -> [SuggestedProductResponse]
 }
 
 final class SuggestedProductsService: SuggestedProductsServiceProtocol, BaseServiceProtocol {
@@ -18,10 +18,10 @@ final class SuggestedProductsService: SuggestedProductsServiceProtocol, BaseServ
         self.networkLoader = networkLoader
     }
     
-    func getSuggestedProducts() async throws -> SuggestedProduct {
+    func getSuggestedProducts() async throws -> [SuggestedProductResponse] {
         return try await request(with: RequestObject(
             url: build(endpoint: .suggestedProducts)
             ),
-            responseModel: SuggestedProduct.self)
+            responseModel: [SuggestedProductResponse].self)
     }
 }

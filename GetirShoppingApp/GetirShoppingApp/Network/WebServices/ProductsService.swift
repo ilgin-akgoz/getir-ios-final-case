@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ProductsServiceProtocol {
-    func getProducts() async throws -> Product
+    func getProducts() async throws -> [ProductResponse]
 }
 
 final class ProductsService: ProductsServiceProtocol, BaseServiceProtocol {
@@ -18,10 +18,10 @@ final class ProductsService: ProductsServiceProtocol, BaseServiceProtocol {
         self.networkLoader = networkLoader
     }
     
-    func getProducts() async throws -> Product {
+    func getProducts() async throws -> [ProductResponse] {
         return try await request(with: RequestObject(
             url: build(endpoint: .products)
             ),
-            responseModel: Product.self)
+            responseModel: [ProductResponse].self)
     }
 }

@@ -8,33 +8,29 @@
 import Foundation
 
 // Vertical scroll
-struct Product: Decodable {
+struct ProductResponse: Decodable {
     let id: String?
     let name: String?
     let productCount: Int?
-    let products: [ProductDetail]
-    
-    struct ProductDetail: Decodable {
-        let id: String?
-        let name: String?
-        let attribute: String?
-        let thumbnailURL: String?
-        let imageURL: String?
-        let price: Double?
-        let priceText: String?
-    }
+    let products: [Product]?
+    let email: String?
+    let password: String?
+}
+
+struct Product: Decodable {
+    let id: String?
+    let name: String?
+    let attribute: String?
+    let thumbnailURL: String?
+    let imageURL: String?
+    let price: Double?
+    let priceText: String?
+    let shortDescription: String?
 }
 
 // Horizontal scroll
-struct SuggestedProduct: Decodable {
-    let products: [SuggestedProductDetail]
-    
-    struct SuggestedProductDetail: Decodable {
-        let id: String?
-        let imageURL: String?
-        let price: Double?
-        let name: String?
-        let priceText: String?
-        let shortDescription: String?
-    }
+struct SuggestedProductResponse: Decodable {
+    let id: String?
+    let name: String?
+    let products: [Product]?
 }
