@@ -12,4 +12,9 @@ extension UIFont {
         let fontDescriptor = UIFontDescriptor(name: "OpenSans-Bold", size: size)
         return UIFont(descriptor: fontDescriptor, size: size)
     }
+    
+    static func openSansSemiBold(size: CGFloat) -> UIFont {
+        let fontDescriptor = UIFontDescriptor(name: "OpenSans-SemiBold", size: size)
+        return UIFont(descriptor: fontDescriptor, size: size)
+    }
 }

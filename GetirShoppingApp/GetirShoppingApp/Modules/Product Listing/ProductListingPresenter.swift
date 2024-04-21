@@ -40,7 +40,7 @@ extension ProductListingPresenter: ProductListingPresenterProtocol {
     
     func viewDidLoad() {
         view.setTitle("Ürünler")
-        view.setBackgroundColor(.systemGray)
+        view.setBackgroundColor(.backgroundColor)
         view.setupNavigationBarButtonItem()
         view.setupCollectionView()
         

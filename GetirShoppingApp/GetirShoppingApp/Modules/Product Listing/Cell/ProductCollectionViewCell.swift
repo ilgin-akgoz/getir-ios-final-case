@@ -24,6 +24,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
     
     private let imageView: UIImageView = {
         let image = UIImageView()
+        image.image = UIImage(named: "placeholder")
         image.layer.borderWidth = 1
         image.layer.cornerRadius = 16
         image.clipsToBounds = true
@@ -56,17 +57,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
     
     private let addButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        button.layer.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        button.layer.cornerRadius = 5
-        button.setImage(UIImage(systemName: "plus"), for: .normal)
-        button.tintColor = .primaryColor
-        
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 0.1
-        button.layer.shadowOffset = CGSize(width: 0, height: 1)
-        button.layer.shadowRadius = 3
-        button.layer.shadowPath = UIBezierPath(roundedRect: button.bounds, cornerRadius: button.layer.cornerRadius).cgPath
+        button.setImage(UIImage(named: "stepper"), for: .normal)
         return button
     }()
     
@@ -106,8 +97,8 @@ final class ProductCollectionViewCell: UICollectionViewCell {
             
             addButton.topAnchor.constraint(equalTo: imageView.topAnchor, constant: -6),
             addButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 6),
-            addButton.widthAnchor.constraint(equalToConstant: 24),
-            addButton.heightAnchor.constraint(equalToConstant: 24),
+            addButton.widthAnchor.constraint(equalToConstant: 32),
+            addButton.heightAnchor.constraint(equalToConstant: 32),
             
             priceLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4),
             priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

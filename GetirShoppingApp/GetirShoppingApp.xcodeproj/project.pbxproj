@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A2E3F412BD52AB500AC15DE /* ProductDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E3F402BD52AB500AC15DE /* ProductDetailPresenter.swift */; };
+		3A2E3F432BD52B1600AC15DE /* ProductDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E3F422BD52B1600AC15DE /* ProductDetailInteractor.swift */; };
+		3A2E3F452BD5443C00AC15DE /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A2E3F442BD5443C00AC15DE /* OpenSans-SemiBold.ttf */; };
 		3A9755422BCD448F00C510EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9755412BCD448F00C510EB /* AppDelegate.swift */; };
 		3A9755442BCD448F00C510EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9755432BCD448F00C510EB /* SceneDelegate.swift */; };
 		3A97554B2BCD449000C510EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A97554A2BCD449000C510EB /* Assets.xcassets */; };
@@ -44,6 +47,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A2E3F402BD52AB500AC15DE /* ProductDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPresenter.swift; sourceTree = "<group>"; };
+		3A2E3F422BD52B1600AC15DE /* ProductDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailInteractor.swift; sourceTree = "<group>"; };
+		3A2E3F442BD5443C00AC15DE /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		3A97553E2BCD448F00C510EB /* GetirShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetirShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9755412BCD448F00C510EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A9755432BCD448F00C510EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 				3ABC47E72BCEA07B00848D9B /* Extensions */,
 				3A97554A2BCD449000C510EB /* Assets.xcassets */,
 				3ABC47EC2BCEAD1800848D9B /* OpenSans-Bold.ttf */,
+				3A2E3F442BD5443C00AC15DE /* OpenSans-SemiBold.ttf */,
 				3AECE3BE2BD3BCA600D9CE7A /* ImageManager.swift */,
 			);
 			path = Resources;
@@ -183,6 +190,8 @@
 			children = (
 				3ABC47DB2BCE9AA300848D9B /* ProductDetailViewController.swift */,
 				3AB23E9A2BD31060005BAC7F /* ProductDetailRouter.swift */,
+				3A2E3F402BD52AB500AC15DE /* ProductDetailPresenter.swift */,
+				3A2E3F422BD52B1600AC15DE /* ProductDetailInteractor.swift */,
 			);
 			path = "Product Detail";
 			sourceTree = "<group>";
@@ -329,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A2E3F452BD5443C00AC15DE /* OpenSans-SemiBold.ttf in Resources */,
 				3A97554B2BCD449000C510EB /* Assets.xcassets in Resources */,
 				3A97554E2BCD449000C510EB /* Base in Resources */,
 				3ABC47ED2BCEAD1800848D9B /* OpenSans-Bold.ttf in Resources */,
@@ -345,6 +355,7 @@
 				3A9755422BCD448F00C510EB /* AppDelegate.swift in Sources */,
 				3ABD07842BD01458004E4FCC /* BaseEndpoint.swift in Sources */,
 				3AECE3BF2BD3BCA600D9CE7A /* ImageManager.swift in Sources */,
+				3A2E3F412BD52AB500AC15DE /* ProductDetailPresenter.swift in Sources */,
 				3ABC47DE2BCE9AAA00848D9B /* ShoppingCartViewController.swift in Sources */,
 				3ABD077C2BD01344004E4FCC /* NetworkLoaderProvider.swift in Sources */,
 				3ABC47DC2BCE9AA300848D9B /* ProductDetailViewController.swift in Sources */,
@@ -359,6 +370,7 @@
 				3ABC47E22BCE9D0F00848D9B /* ProductListingInteractor.swift in Sources */,
 				3AB23E9B2BD31060005BAC7F /* ProductDetailRouter.swift in Sources */,
 				3ABD078E2BD01851004E4FCC /* ProductsEndpoint.swift in Sources */,
+				3A2E3F432BD52B1600AC15DE /* ProductDetailInteractor.swift in Sources */,
 				3ABC47E42BCE9D2100848D9B /* ProductListingEntity.swift in Sources */,
 				3ABD07872BD0150A004E4FCC /* Configuration.swift in Sources */,
 				3A9755442BCD448F00C510EB /* SceneDelegate.swift in Sources */,
