@@ -43,14 +43,16 @@ final class ProductCollectionViewCell: UICollectionViewCell {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Product Name"
-        label.font = .openSansBold(size: 12)
+        label.textColor = .textDarkColor
+        label.font = .openSansSemiBold(size: 12)
         return label
     }()
     
     private let attributeLabel: UILabel = {
         let label = UILabel()
         label.text = "Attribute"
-        label.font = .openSansBold(size: 10)
+        label.textColor = .textSecondaryColor
+        label.font = .openSansSemiBold(size: 12)
         label.textColor = .gray
         return label
     }()
