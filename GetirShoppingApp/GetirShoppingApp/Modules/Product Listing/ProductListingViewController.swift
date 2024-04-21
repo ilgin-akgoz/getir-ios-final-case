@@ -48,30 +48,29 @@ extension ProductListingViewController: ProductListingViewControllerProtocol {
             if sectionIndex == 0 {
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.01), heightDimension: .fractionalHeight(0.5))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(0.5))
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .fractionalHeight(0.5))
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .continuous
-                section.interGroupSpacing = 10
-                section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+                section.interGroupSpacing = 8
+                section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
                 return section
             } else {
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.01), heightDimension: .fractionalHeight(0.5))
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+                item.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4)
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5))
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
-                //group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
                 let section = NSCollectionLayoutSection(group: group)
-                section.interGroupSpacing = 10
-                //section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+                section.interGroupSpacing = 8
+                section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
                 return section
             }
         }
         
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .backgroundColor
         collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: "ProductCell")
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -114,12 +113,10 @@ extension ProductListingViewController: UICollectionViewDataSource, UICollection
         if indexPath.section == 0 {
             if let product = presenter.suggestedProduct(indexPath.row) {
                 cell.cellPresenter = ProductCollectionViewCellPresenter(view: cell, product: product)
-                cell.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.5)
             }
         } else {
             if let product = presenter.product(indexPath.row) {
                 cell.cellPresenter = ProductCollectionViewCellPresenter(view: cell, product: product)
-                cell.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.5)
             }
         }
         

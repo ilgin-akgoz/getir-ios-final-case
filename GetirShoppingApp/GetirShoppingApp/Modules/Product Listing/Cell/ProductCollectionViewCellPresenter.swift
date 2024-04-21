@@ -5,7 +5,7 @@
 //  Created by Ilgın Akgöz on 20.04.2024.
 //
 
-import Foundation
+import UIKit
 
 protocol ProductCollectionViewCellPresenterProtocol: AnyObject {
     func load()
@@ -24,7 +24,19 @@ final class ProductCollectionViewCellPresenter {
 
 extension ProductCollectionViewCellPresenter: ProductCollectionViewCellPresenterProtocol {
     func load() {
-        self.view?.setImage(product.imageURL ?? "")
+        let url = URL(string: product.imageURL ?? "")
+        
+        ImageManager.shared.fetchImage(url: url) { result in
+            switch result {
+            case .success(let imageData):
+                DispatchQueue.main.async {
+                    self.view?.setImage(UIImage(data: imageData))
+                }
+            case .failure(let error):
+                print("Error loading image: \(error)")
+            }
+        }
+
         self.view?.setPriceLabel(product.priceText ?? "₺0,00")
         self.view?.setNameLabel(product.name ?? "Product Name")
         self.view?.setAttributeLabel(product.attribute ?? "Attribute")

@@ -40,6 +40,7 @@
 		3ABD07902BD01870004E4FCC /* ProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD078F2BD01870004E4FCC /* ProductsService.swift */; };
 		3ABD07922BD01B35004E4FCC /* SuggestedProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD07912BD01B35004E4FCC /* SuggestedProductsService.swift */; };
 		3ABD07942BD01B77004E4FCC /* SuggestedProductsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD07932BD01B77004E4FCC /* SuggestedProductsEndpoint.swift */; };
+		3AECE3BF2BD3BCA600D9CE7A /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AECE3BE2BD3BCA600D9CE7A /* ImageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		3ABD078F2BD01870004E4FCC /* ProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsService.swift; sourceTree = "<group>"; };
 		3ABD07912BD01B35004E4FCC /* SuggestedProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedProductsService.swift; sourceTree = "<group>"; };
 		3ABD07932BD01B77004E4FCC /* SuggestedProductsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedProductsEndpoint.swift; sourceTree = "<group>"; };
+		3AECE3BE2BD3BCA600D9CE7A /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				3ABC47E72BCEA07B00848D9B /* Extensions */,
 				3A97554A2BCD449000C510EB /* Assets.xcassets */,
 				3ABC47EC2BCEAD1800848D9B /* OpenSans-Bold.ttf */,
+				3AECE3BE2BD3BCA600D9CE7A /* ImageManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			files = (
 				3A9755422BCD448F00C510EB /* AppDelegate.swift in Sources */,
 				3ABD07842BD01458004E4FCC /* BaseEndpoint.swift in Sources */,
+				3AECE3BF2BD3BCA600D9CE7A /* ImageManager.swift in Sources */,
 				3ABC47DE2BCE9AAA00848D9B /* ShoppingCartViewController.swift in Sources */,
 				3ABD077C2BD01344004E4FCC /* NetworkLoaderProvider.swift in Sources */,
 				3ABC47DC2BCE9AA300848D9B /* ProductDetailViewController.swift in Sources */,
