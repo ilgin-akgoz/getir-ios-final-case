@@ -18,13 +18,13 @@ protocol ProductDetailRouterProtocol: AnyObject {
 final class ProductDetailRouter {
     weak var viewController: ProductDetailViewController?
     
-    static func createModule() -> ProductDetailViewController {
+    static func createModule(with product: Product) -> ProductDetailViewController {
         
         let view = ProductDetailViewController()
         let interactor = ProductDetailInteractor()
         let router = ProductDetailRouter()
         
-        let presenter = ProductDetailPresenter(view: view, router: router, interactor: interactor)
+        let presenter = ProductDetailPresenter(view: view, router: router, interactor: interactor, product: product)
         
         view.presenter = presenter
         interactor.output = presenter

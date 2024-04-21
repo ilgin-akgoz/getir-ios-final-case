@@ -102,15 +102,15 @@ final class ProductCollectionViewCell: UICollectionViewCell {
             addButton.widthAnchor.constraint(equalToConstant: 32),
             addButton.heightAnchor.constraint(equalToConstant: 32),
             
-            priceLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4),
+            priceLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 2),
             priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            nameLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 4),
+            nameLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 2),
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            attributeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
+            attributeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 2),
             attributeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             attributeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             attributeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)

@@ -10,6 +10,8 @@
 		3A2E3F412BD52AB500AC15DE /* ProductDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E3F402BD52AB500AC15DE /* ProductDetailPresenter.swift */; };
 		3A2E3F432BD52B1600AC15DE /* ProductDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E3F422BD52B1600AC15DE /* ProductDetailInteractor.swift */; };
 		3A2E3F452BD5443C00AC15DE /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A2E3F442BD5443C00AC15DE /* OpenSans-SemiBold.ttf */; };
+		3A2E3F472BD5A0D500AC15DE /* SectionBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E3F462BD5A0D500AC15DE /* SectionBackgroundView.swift */; };
+		3A2E3F492BD5A15500AC15DE /* UICollectionReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2E3F482BD5A15500AC15DE /* UICollectionReusableView+Extension.swift */; };
 		3A9755422BCD448F00C510EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9755412BCD448F00C510EB /* AppDelegate.swift */; };
 		3A9755442BCD448F00C510EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9755432BCD448F00C510EB /* SceneDelegate.swift */; };
 		3A97554B2BCD449000C510EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A97554A2BCD449000C510EB /* Assets.xcassets */; };
@@ -50,6 +52,8 @@
 		3A2E3F402BD52AB500AC15DE /* ProductDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPresenter.swift; sourceTree = "<group>"; };
 		3A2E3F422BD52B1600AC15DE /* ProductDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailInteractor.swift; sourceTree = "<group>"; };
 		3A2E3F442BD5443C00AC15DE /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		3A2E3F462BD5A0D500AC15DE /* SectionBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionBackgroundView.swift; sourceTree = "<group>"; };
+		3A2E3F482BD5A15500AC15DE /* UICollectionReusableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Extension.swift"; sourceTree = "<group>"; };
 		3A97553E2BCD448F00C510EB /* GetirShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetirShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9755412BCD448F00C510EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A9755432BCD448F00C510EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 				3ABC47EC2BCEAD1800848D9B /* OpenSans-Bold.ttf */,
 				3A2E3F442BD5443C00AC15DE /* OpenSans-SemiBold.ttf */,
 				3AECE3BE2BD3BCA600D9CE7A /* ImageManager.swift */,
+				3A2E3F462BD5A0D500AC15DE /* SectionBackgroundView.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			children = (
 				3ABC47E82BCEA0E100848D9B /* UIColor+Extension.swift */,
 				3ABC47EA2BCEAC3400848D9B /* UIFont+Extension.swift */,
+				3A2E3F482BD5A15500AC15DE /* UICollectionReusableView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 			files = (
 				3A9755422BCD448F00C510EB /* AppDelegate.swift in Sources */,
 				3ABD07842BD01458004E4FCC /* BaseEndpoint.swift in Sources */,
+				3A2E3F472BD5A0D500AC15DE /* SectionBackgroundView.swift in Sources */,
 				3AECE3BF2BD3BCA600D9CE7A /* ImageManager.swift in Sources */,
 				3A2E3F412BD52AB500AC15DE /* ProductDetailPresenter.swift in Sources */,
 				3ABC47DE2BCE9AAA00848D9B /* ShoppingCartViewController.swift in Sources */,
@@ -363,6 +370,7 @@
 				3ABD07902BD01870004E4FCC /* ProductsService.swift in Sources */,
 				3AB23E9D2BD31A6C005BAC7F /* ShoppingCartRouter.swift in Sources */,
 				3ABC47E02BCE9CE600848D9B /* ProductListingPresenter.swift in Sources */,
+				3A2E3F492BD5A15500AC15DE /* UICollectionReusableView+Extension.swift in Sources */,
 				3ABD07812BD013F3004E4FCC /* TargetEndpointProtocol.swift in Sources */,
 				3ABD07942BD01B77004E4FCC /* SuggestedProductsEndpoint.swift in Sources */,
 				3AB23EA22BD3252D005BAC7F /* ProductCollectionViewCellPresenter.swift in Sources */,

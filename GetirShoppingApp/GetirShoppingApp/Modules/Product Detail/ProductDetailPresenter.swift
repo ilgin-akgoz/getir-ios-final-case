@@ -5,7 +5,7 @@
 //  Created by Ilgın Akgöz on 21.04.2024.
 //
 
-import Foundation
+import UIKit
 
 protocol ProductDetailPresenterProtocol: AnyObject {
     func viewDidLoad()
@@ -17,16 +17,17 @@ final class ProductDetailPresenter {
     unowned var view: ProductDetailViewControllerProtocol!
     let router: ProductDetailRouterProtocol!
     let interactor: ProductDetailInteractorProtocol!
-    
-    // private var product: Product?
-    
+    let product: Product!
+
     init(view: ProductDetailViewControllerProtocol,
          router: ProductDetailRouterProtocol,
-         interactor: ProductDetailInteractorProtocol)
+         interactor: ProductDetailInteractorProtocol,
+         product: Product)
     {
         self.view = view
         self.router = router
         self.interactor = interactor
+        self.product = product
     }
     
 }
@@ -37,7 +38,22 @@ extension ProductDetailPresenter: ProductDetailPresenterProtocol {
         view.setBackgroundColor(.white)
         view.setupNavigationBarButtonItem()
         view.setupTabBar()
-        view.setupStackView()
+        
+        let url = URL(string: product.imageURL ?? "")
+        
+        ImageManager.shared.fetchImage(url: url) { result in
+            switch result {
+            case .success(let imageData):
+                DispatchQueue.main.async {
+                    self.view.setupStackView(image: UIImage(data: imageData) ?? UIImage(named: "placeholder")!,
+                                             price: self.product.priceText ?? "₺0,00",
+                                             name: self.product.name ?? "Product Name",
+                                             attribute: self.product.shortDescription ?? "Attribute")
+                                             }
+            case .failure(let error):
+                print("Error loading image: \(error)")
+            }
+        }
     }
     
     func tappedBackToList() {

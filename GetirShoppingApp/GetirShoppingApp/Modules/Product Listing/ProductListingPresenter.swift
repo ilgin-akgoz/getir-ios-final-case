@@ -14,7 +14,7 @@ protocol ProductListingPresenterProtocol: AnyObject {
     func suggestedProduct(_ index: Int) -> Product?
     func product(_ index: Int) -> Product?
     func tappedShoppingCart()
-    func didSelectItemAt(index: Int)
+    func didSelectItem(_ selectedProduct: Product)
 }
 
 final class ProductListingPresenter {
@@ -67,11 +67,11 @@ extension ProductListingPresenter: ProductListingPresenterProtocol {
     }
     
     func tappedShoppingCart() {
-        router.navigate(.shoppingCart)
+        //router.navigate(.shoppingCart)
     }
     
-    func didSelectItemAt(index: Int) {
-        router.navigate(.productDetail)
+    func didSelectItem(_ selectedProduct: Product) {
+        router.navigate(.productDetail, with: selectedProduct)
     }
     
     private func fetchSuggestedProducts() async {

@@ -13,7 +13,7 @@ enum ProductListingRoutes {
 }
 
 protocol ProductListingRouterProtocol: AnyObject {
-    func navigate(_ route: ProductListingRoutes)
+    func navigate(_ route: ProductListingRoutes, with product: Product)
 }
 
 final class ProductListingRouter {
@@ -39,10 +39,10 @@ final class ProductListingRouter {
 
 extension ProductListingRouter: ProductListingRouterProtocol {
     
-    func navigate(_ route: ProductListingRoutes) {
+    func navigate(_ route: ProductListingRoutes, with product: Product) {
         switch route {
         case .productDetail:
-            let productDetailVC = ProductDetailRouter.createModule()
+            let productDetailVC = ProductDetailRouter.createModule(with: product)
             viewController?.navigationController?.pushViewController(productDetailVC, animated: true)
         case .shoppingCart:
             let shoppingCartVC = ShoppingCartRouter.createModule()

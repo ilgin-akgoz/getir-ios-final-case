@@ -12,7 +12,7 @@ protocol ProductDetailViewControllerProtocol: AnyObject {
     func setBackgroundColor(_ color: UIColor)
     func setupNavigationBarButtonItem()
     func setupTabBar()
-    func setupStackView()
+    func setupStackView(image: UIImage, price: String, name: String, attribute: String)
 }
 
 final class ProductDetailViewController: UIViewController {
@@ -33,22 +33,22 @@ extension ProductDetailViewController: ProductDetailViewControllerProtocol {
         self.view.backgroundColor = color
     }
     
-    func setupStackView() {
-        let imageView = UIImageView(image: UIImage(named: "placeholder"))
+    func setupStackView(image: UIImage, price: String, name: String, attribute: String) {
+        let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         
         let priceLabel = UILabel()
-        priceLabel.text = "₺0,00"
+        priceLabel.text = price
         priceLabel.textColor = .primaryColor
         priceLabel.font = .openSansBold(size: 20)
         
         let nameLabel = UILabel()
-        nameLabel.text = "Product Name"
+        nameLabel.text = name
         nameLabel.textColor = .textDarkColor
         nameLabel.font = .openSansSemiBold(size: 16)
         
         let attributeLabel = UILabel()
-        attributeLabel.text = "Attribute"
+        attributeLabel.text = attribute
         attributeLabel.textColor = .textSecondaryColor
         attributeLabel.font = .openSansBold(size: 12)
         
@@ -65,6 +65,9 @@ extension ProductDetailViewController: ProductDetailViewControllerProtocol {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: 200),
+            imageView.heightAnchor.constraint(equalToConstant: 200),
+            
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
