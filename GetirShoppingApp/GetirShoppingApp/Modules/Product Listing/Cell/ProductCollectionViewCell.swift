@@ -98,15 +98,14 @@ final class ProductCollectionViewCell: UICollectionViewCell {
     }
 
     @objc private func addButtonTapped() {
-        //cellPresenter.tappedAddButton()
-        
+        cellPresenter.tappedAddButton()
         UIView.animate(withDuration: 0.3) {
             self.imageView.layer.borderColor = UIColor.primaryColor.cgColor
         }
     }
     
     @objc private func subtractButtonTapped() {
-        //cellPresenter.tappedTrashButton()
+        cellPresenter.tappedSubtractButton()
         if stepperButton.count == 0 {
             UIView.animate(withDuration: 0.3) {
                 self.imageView.layer.borderColor = UIColor.imageBorderColor.cgColor

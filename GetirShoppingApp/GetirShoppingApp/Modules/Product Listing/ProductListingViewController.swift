@@ -35,11 +35,13 @@ extension ProductListingViewController: ProductListingViewControllerProtocol {
     }
     
     func setupNavigationBarButtonItem() {
-        let rightButton = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(shoppingCartAction))
-        self.navigationItem.rightBarButtonItem = rightButton
+        let cartButton = CartButton()
+        cartButton.addTarget(self, action: #selector(shoppingCartButtonTapped), for: .touchUpInside)
+        let rightBarButton = UIBarButtonItem(customView: cartButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
     }
     
-    @objc private func shoppingCartAction() {
+    @objc private func shoppingCartButtonTapped() {
         presenter.tappedShoppingCart()
     }
     

@@ -10,6 +10,7 @@ import UIKit
 protocol ProductCollectionViewCellPresenterProtocol: AnyObject {
     func load()
     func tappedAddButton()
+    func tappedSubtractButton()
 }
 
 final class ProductCollectionViewCellPresenter {
@@ -44,6 +45,10 @@ extension ProductCollectionViewCellPresenter: ProductCollectionViewCellPresenter
     }
     
     func tappedAddButton() {
-        
+        CartManager.shared.addToCart(productPrice: product.price ?? 0)
+    }
+    
+    func tappedSubtractButton() {
+        CartManager.shared.removeFromCart(productPrice: product.price ?? 0)
     }
 }

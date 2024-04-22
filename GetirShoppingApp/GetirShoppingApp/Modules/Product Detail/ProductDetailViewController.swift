@@ -85,10 +85,19 @@ extension ProductDetailViewController: ProductDetailViewControllerProtocol {
         let leftButton = UIBarButtonItem(image: UIImage(named: "left_controls"), style: .plain, target: self, action: #selector(backToListButtonTapped))
         leftButton.tintColor = .white
         self.navigationItem.leftBarButtonItem = leftButton
+        
+        let cartButton = CartButton()
+        cartButton.addTarget(self, action: #selector(shoppingCartButtonTapped), for: .touchUpInside)
+        let rightBarButton = UIBarButtonItem(customView: cartButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
     }
     
     @objc private func backToListButtonTapped() {
         presenter.tappedBackToList()
+    }
+    
+    @objc private func shoppingCartButtonTapped() {
+        presenter.tappedShoppingCart()
     }
     
     func setupTabBar() {
@@ -126,6 +135,9 @@ extension ProductDetailViewController: ProductDetailViewControllerProtocol {
             button.layer.shadowRadius = 6
             return button
         }()
+        
+        stepperButton.addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        stepperButton.subtractButton.addTarget(self, action: #selector(subtractButtonTapped), for: .touchUpInside)
 
         view.addSubview(tabBar)
         tabBar.addSubview(tabBarButton)
@@ -151,7 +163,16 @@ extension ProductDetailViewController: ProductDetailViewControllerProtocol {
     
     @objc private func addToCartButtonTapped() {
         presenter.tappedAddToCart()
+        stepperButton.count += 1
         tabBarButton.isHidden = true
         stepperButton.isHidden = false
+    }
+
+    @objc private func addButtonTapped() {
+        presenter.tappedAddButton()
+    }
+    
+    @objc private func subtractButtonTapped() {
+        presenter.tappedSubtractButton()
     }
 }

@@ -11,6 +11,9 @@ protocol ProductDetailPresenterProtocol: AnyObject {
     func viewDidLoad()
     func tappedBackToList()
     func tappedAddToCart()
+    func tappedShoppingCart()
+    func tappedAddButton()
+    func tappedSubtractButton()
 }
 
 final class ProductDetailPresenter {
@@ -47,7 +50,19 @@ extension ProductDetailPresenter: ProductDetailPresenterProtocol {
     }
     
     func tappedAddToCart() {
-        //TODO: add to cart action
+        CartManager.shared.addToCart(productPrice: product.price ?? 0)
+    }
+    
+    func tappedShoppingCart() {
+        //TODO: navigate to the cart screen
+    }
+    
+    func tappedAddButton() {
+        CartManager.shared.addToCart(productPrice: product.price ?? 0)
+    }
+    
+    func tappedSubtractButton() {
+        CartManager.shared.removeFromCart(productPrice: product.price ?? 0)
     }
 }
 

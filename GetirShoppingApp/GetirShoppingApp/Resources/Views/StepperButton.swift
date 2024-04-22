@@ -14,6 +14,7 @@ final class StepperButton: UIButton {
         button.layer.masksToBounds = true
         return button
     }()
+    
     let subtractButton = UIButton()
 
     let countLabel: UILabel = {
