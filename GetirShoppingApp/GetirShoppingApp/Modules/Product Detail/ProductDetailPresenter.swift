@@ -39,21 +39,7 @@ extension ProductDetailPresenter: ProductDetailPresenterProtocol {
         view.setupNavigationBarButtonItem()
         view.setupTabBar()
         
-        let url = URL(string: product.imageURL ?? "")
-        
-        ImageManager.shared.fetchImage(url: url) { result in
-            switch result {
-            case .success(let imageData):
-                DispatchQueue.main.async {
-                    self.view.setupStackView(image: UIImage(data: imageData) ?? UIImage(named: "placeholder")!,
-                                             price: self.product.priceText ?? "₺0,00",
-                                             name: self.product.name ?? "Product Name",
-                                             attribute: self.product.shortDescription ?? "Attribute")
-                                             }
-            case .failure(let error):
-                print("Error loading image: \(error)")
-            }
-        }
+        interactor.fetchImage(url: URL(string: product.imageURL ?? ""))
     }
     
     func tappedBackToList() {
@@ -61,12 +47,21 @@ extension ProductDetailPresenter: ProductDetailPresenterProtocol {
     }
     
     func tappedAddToCart() {
-        //TODO: 
-        print("Added to cart!")
+        //TODO: add to cart action
     }
 }
 
 extension ProductDetailPresenter: ProductDetailInteractorOutputProtocol {
+    func didFetchImage(_ image: UIImage) {
+        DispatchQueue.main.async {
+            self.view.setupStackView(image: image,
+                                     price: self.product.priceText ?? "₺0,00",
+                                     name: self.product.name ?? "Product Name",
+                                     attribute: self.product.shortDescription ?? "Attribute")
+        }
+        
+    }
+    
     func addToCartOutput() {
         
     }
