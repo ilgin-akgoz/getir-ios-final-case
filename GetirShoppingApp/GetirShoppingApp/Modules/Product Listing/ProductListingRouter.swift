@@ -7,13 +7,9 @@
 
 import Foundation
 
-enum ProductListingRoutes {
-    case productDetail
-    case shoppingCart
-}
-
 protocol ProductListingRouterProtocol: AnyObject {
-    func navigate(_ route: ProductListingRoutes, with product: Product)
+    func navigate()
+    func navigate(with product: Product)
 }
 
 final class ProductListingRouter {
@@ -39,15 +35,13 @@ final class ProductListingRouter {
 
 extension ProductListingRouter: ProductListingRouterProtocol {
     
-    func navigate(_ route: ProductListingRoutes, with product: Product) {
-        switch route {
-        case .productDetail:
-            let productDetailVC = ProductDetailRouter.createModule(with: product)
-            viewController?.navigationController?.pushViewController(productDetailVC, animated: true)
-        case .shoppingCart:
-            let shoppingCartVC = ShoppingCartRouter.createModule()
-            viewController?.navigationController?.pushViewController(shoppingCartVC, animated: true)
-        }
+    func navigate(with product: Product) {
+        let productDetailVC = ProductDetailRouter.createModule(with: product)
+        viewController?.navigationController?.pushViewController(productDetailVC, animated: true)
     }
     
+    func navigate() {
+        let shoppingCartVC = ShoppingCartRouter.createModule()
+        viewController?.navigationController?.pushViewController(shoppingCartVC, animated: true)
+    }
 }

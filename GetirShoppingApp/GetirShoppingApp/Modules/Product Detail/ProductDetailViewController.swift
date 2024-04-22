@@ -17,7 +17,9 @@ protocol ProductDetailViewControllerProtocol: AnyObject {
 
 final class ProductDetailViewController: UIViewController {
     var presenter: ProductDetailPresenterProtocol!
-
+    var tabBarButton: UIButton!
+    var stepperButton: StepperButton!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.viewDidLoad()
@@ -101,7 +103,7 @@ extension ProductDetailViewController: ProductDetailViewControllerProtocol {
             return tabBar
         }()
         
-        let tabBarButton: UIButton = {
+        tabBarButton = {
             let button = UIButton()
             button.backgroundColor = .primaryColor
             button.titleLabel?.font = .openSansBold(size: 14)
@@ -111,9 +113,23 @@ extension ProductDetailViewController: ProductDetailViewControllerProtocol {
             button.addTarget(self, action: #selector(addToCartButtonTapped), for: .touchUpInside)
             return button
         }()
+        
+        stepperButton = {
+            let button = StepperButton()
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.isHidden = true
+            button.layer.cornerRadius = 8
+            button.layer.masksToBounds = true
+            button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
+            button.layer.shadowOffset = CGSize(width: 0, height: 1)
+            button.layer.shadowOpacity = 1
+            button.layer.shadowRadius = 6
+            return button
+        }()
 
         view.addSubview(tabBar)
         tabBar.addSubview(tabBarButton)
+        tabBar.addSubview(stepperButton)
         
         NSLayoutConstraint.activate([
             tabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -125,10 +141,17 @@ extension ProductDetailViewController: ProductDetailViewControllerProtocol {
             tabBarButton.centerYAnchor.constraint(equalTo: tabBar.centerYAnchor),
             tabBarButton.widthAnchor.constraint(equalToConstant: 343),
             tabBarButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            stepperButton.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor),
+            stepperButton.centerYAnchor.constraint(equalTo: tabBar.centerYAnchor),
+            stepperButton.widthAnchor.constraint(equalToConstant: 146),
+            stepperButton.heightAnchor.constraint(equalToConstant: 48),
         ])
     }
     
     @objc private func addToCartButtonTapped() {
         presenter.tappedAddToCart()
+        tabBarButton.isHidden = true
+        stepperButton.isHidden = false
     }
 }

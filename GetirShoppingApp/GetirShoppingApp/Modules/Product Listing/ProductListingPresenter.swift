@@ -67,11 +67,11 @@ extension ProductListingPresenter: ProductListingPresenterProtocol {
     }
     
     func tappedShoppingCart() {
-        //router.navigate(.shoppingCart)
+        router.navigate()
     }
     
     func didSelectItem(_ selectedProduct: Product) {
-        router.navigate(.productDetail, with: selectedProduct)
+        router.navigate(with: selectedProduct)
     }
     
     private func fetchSuggestedProducts() async {
