@@ -7,23 +7,50 @@
 
 import UIKit
 
+protocol ShoppingCartViewControllerProtocol: AnyObject {
+    func setTitle(_ title: String)
+    func setBackgroundColor(_ color: UIColor)
+    func setupNavigationBarButtonItems()
+    func setupTabBar()
+}
+
 final class ShoppingCartViewController: UIViewController {
+    var presenter: ShoppingCartPresenterProtocol!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewDidLoad()
+    }
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+extension ShoppingCartViewController: ShoppingCartViewControllerProtocol {
+    func setTitle(_ title: String) {
+        self.title = title
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setBackgroundColor(_ color: UIColor) {
+        self.view.backgroundColor = color
     }
-    */
-
+    
+    func setupNavigationBarButtonItems() {
+        let leftButton = UIBarButtonItem(image: UIImage(named: "left_controls"), style: .plain, target: self, action: #selector(backToListButtonTapped))
+        leftButton.tintColor = .white
+        self.navigationItem.leftBarButtonItem = leftButton
+        
+        let rightButton = UIBarButtonItem(image: UIImage(named: "right_controls"), style: .plain, target: self, action: #selector(trashButtonTapped))
+        rightButton.tintColor = .white
+        self.navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    func setupTabBar() {
+        //TODO: set up tab bar
+    }
+    
+    @objc private func backToListButtonTapped() {
+        presenter.tappedBackToList()
+    }
+    
+    @objc private func trashButtonTapped() {
+        presenter.tappedTrash()
+    }
 }

@@ -7,6 +7,14 @@
 
 import Foundation
 
+enum ShoppingCartRoutes {
+    case productListing
+}
+
+protocol ShoppingCartRouterProtocol: AnyObject {
+    func navigate(_ route: ShoppingCartRoutes)
+}
+
 final class ShoppingCartRouter {
     weak var viewController: ShoppingCartViewController?
     
@@ -16,12 +24,21 @@ final class ShoppingCartRouter {
         //let interactor = ShoppingCartInteractor()
         let router = ShoppingCartRouter()
         
-        //let presenter = ProductListingPresenter(view: view, router: router, interactor: interactor)
+        let presenter = ShoppingCartPresenter(view: view, router: router)//, interactor: interactor)
         
-        //view.presenter = presenter
+        view.presenter = presenter
         //interactor.output = presenter
         router.viewController = view
         
         return view
+    }
+}
+
+extension ShoppingCartRouter: ShoppingCartRouterProtocol {
+    func navigate(_ route: ShoppingCartRoutes) {
+        switch route {
+        case .productListing:
+            viewController?.navigationController?.popViewController(animated: true)
+        }
     }
 }
