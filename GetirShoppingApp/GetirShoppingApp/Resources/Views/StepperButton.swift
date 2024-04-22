@@ -88,8 +88,11 @@ final class StepperButton: UIButton {
             countLabel.isHidden = true
         }
     }
-    
+
     func rotate() {
-        
+        self.anchorPoint = CGPoint(x: 0.8, y: -0.5)
+        self.transform = CGAffineTransform(rotationAngle: -90 * .pi / 180)
+        self.subtractButton.transform = CGAffineTransform(rotationAngle: 90 * .pi / 180)
+        self.countLabel.transform = CGAffineTransform(rotationAngle: 90 * .pi / 180)
     }
 }
