@@ -9,6 +9,7 @@ import Foundation
 
 enum ProductDetailRoutes {
     case productListing
+    case shoppingCart
 }
 
 protocol ProductDetailRouterProtocol: AnyObject {
@@ -40,6 +41,9 @@ extension ProductDetailRouter: ProductDetailRouterProtocol {
         switch route {
         case .productListing:
             viewController?.navigationController?.popViewController(animated: true)
+        case .shoppingCart:
+            let shoppingCartVC = ShoppingCartRouter.createModule()
+            viewController?.navigationController?.pushViewController(shoppingCartVC, animated: true)
         }
     }
     

@@ -54,7 +54,7 @@ extension ProductDetailPresenter: ProductDetailPresenterProtocol {
     }
     
     func tappedShoppingCart() {
-        //TODO: navigate to the cart screen
+        router.navigate(.shoppingCart)
     }
     
     func tappedAddButton() {

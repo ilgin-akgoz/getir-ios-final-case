@@ -12,6 +12,7 @@ protocol ShoppingCartPresenterProtocol: AnyObject {
     func tappedBackToList()
     func tappedAddToCart()
     func tappedTrash()
+    func tappedPlaceOrder()
 }
 
 final class ShoppingCartPresenter {
@@ -51,5 +52,9 @@ extension ShoppingCartPresenter: ShoppingCartPresenterProtocol {
     func tappedTrash() {
         //TODO: trash button action
         print("Deleted all items!")
+    }
+    
+    func tappedPlaceOrder() {
+        //TODO: place order action, alert controller
     }
 }
