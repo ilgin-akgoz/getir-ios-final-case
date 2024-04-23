@@ -9,12 +9,10 @@ import UIKit
 
 protocol ProductDetailInteractorProtocol {
     func fetchImage(url: URL?)
-    func addToCart(product: Product)
 }
 
 protocol ProductDetailInteractorOutputProtocol: AnyObject {
     func fetchImageOutput(_ image: UIImage)
-    func addToCartOutput()
 }
 
 final class ProductDetailInteractor {
@@ -36,9 +34,5 @@ extension ProductDetailInteractor: ProductDetailInteractorProtocol {
                 print(error)
             }
         }
-    }
-    
-    func addToCart(product: Product) {
-        self.output?.addToCartOutput()
     }
 }

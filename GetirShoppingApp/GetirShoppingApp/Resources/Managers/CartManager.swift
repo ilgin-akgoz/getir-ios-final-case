@@ -21,7 +21,8 @@ final class CartManager {
     }
     
     func getTotalPrice() -> String {
-        "₺\(totalPrice)"
+        let formattedPrice = String(format: "₺%.2f", totalPrice)
+        return formattedPrice
     }
     
     func getProductCount() -> Int {

@@ -77,10 +77,5 @@ extension ProductDetailPresenter: ProductDetailInteractorOutputProtocol {
                                      name: self.product.name ?? "Product Name",
                                      attribute: self.product.shortDescription ?? "Attribute")
         }
-        
-    }
-    
-    func addToCartOutput() {
-        
     }
 }
