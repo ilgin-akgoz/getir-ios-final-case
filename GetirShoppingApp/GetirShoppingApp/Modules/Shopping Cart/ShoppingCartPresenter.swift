@@ -49,8 +49,8 @@ extension ShoppingCartPresenter: ShoppingCartPresenterProtocol {
     }
     
     func tappedTrash() {
-        //TODO: trash button action
-        print("Deleted all items!")
+        CartManager.shared.removeAllProducts()
+        view.reloadData()
     }
     
     func tappedPlaceOrder() {

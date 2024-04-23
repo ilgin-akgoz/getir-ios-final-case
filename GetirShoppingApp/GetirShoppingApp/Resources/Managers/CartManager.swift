@@ -46,4 +46,9 @@ final class CartManager {
             }
         }
     }
+    
+    func removeAllProducts() {
+        products.removeAll()
+        totalPrice = 0
+    }
 }

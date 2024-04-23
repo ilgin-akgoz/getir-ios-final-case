@@ -13,17 +13,13 @@ protocol ProductDetailInteractorProtocol {
 }
 
 protocol ProductDetailInteractorOutputProtocol: AnyObject {
-    func didFetchImage(_ image: UIImage)
+    func fetchImageOutput(_ image: UIImage)
     func addToCartOutput()
 }
 
 final class ProductDetailInteractor {
     weak var output: ProductDetailInteractorOutputProtocol?
-    let imageManager: ImageManager
-    
-    init(imageManager: ImageManager = ImageManager.shared) {
-        self.imageManager = imageManager
-    }
+    private let imageManager = ImageManager.shared
 }
 
 extension ProductDetailInteractor: ProductDetailInteractorProtocol {
@@ -34,7 +30,7 @@ extension ProductDetailInteractor: ProductDetailInteractorProtocol {
             switch result {
             case .success(let imageData):
                 if let image = UIImage(data: imageData) {
-                    self.output?.didFetchImage(image)
+                    self.output?.fetchImageOutput(image)
                 }
             case .failure(let error):
                 print(error)

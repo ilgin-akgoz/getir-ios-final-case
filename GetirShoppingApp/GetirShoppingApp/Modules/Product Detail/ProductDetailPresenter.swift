@@ -67,7 +67,7 @@ extension ProductDetailPresenter: ProductDetailPresenterProtocol {
 }
 
 extension ProductDetailPresenter: ProductDetailInteractorOutputProtocol {
-    func didFetchImage(_ image: UIImage) {
+    func fetchImageOutput(_ image: UIImage) {
         DispatchQueue.main.async {
             self.view.setupStackView(image: image,
                                      price: self.product.priceText ?? "₺0,00",
