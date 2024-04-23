@@ -21,6 +21,7 @@ final class ProductDetailPresenter {
     let router: ProductDetailRouterProtocol!
     let interactor: ProductDetailInteractorProtocol!
     let product: Product!
+    private let cartManager = CartManager.shared
 
     init(view: ProductDetailViewControllerProtocol,
          router: ProductDetailRouterProtocol,
@@ -50,21 +51,21 @@ extension ProductDetailPresenter: ProductDetailPresenterProtocol {
     }
     
     func tappedAddToCart() {
-        CartManager.shared.addToCart(product)
+        cartManager.addToCart(product)
     }
     
     func tappedShoppingCart() {
-        if !CartManager.shared.isCartEmpty() {
+        if !cartManager.isCartEmpty() {
             router.navigate(.shoppingCart)
         }
     }
     
     func tappedAddButton() {
-        CartManager.shared.addToCart(product)
+        cartManager.addToCart(product)
     }
     
     func tappedSubtractButton() {
-        CartManager.shared.removeFromCart(product)
+        cartManager.removeFromCart(product)
     }
 }
 

@@ -16,6 +16,7 @@ protocol ProductTableViewCellPresenterProtocol: AnyObject {
 final class ProductTableViewCellPresenter {
     weak var view: ProductTableViewCellProtocol?
     private let product: Product
+    private let cartManager = CartManager.shared
     
     init(view: ProductTableViewCellProtocol,
          product: Product) {
@@ -45,10 +46,10 @@ extension ProductTableViewCellPresenter: ProductTableViewCellPresenterProtocol {
     }
     
     func tappedAddButton() {
-        CartManager.shared.addToCart(product)
+        cartManager.addToCart(product)
     }
     
     func tappedSubtractButton() {
-        CartManager.shared.removeFromCart(product)
+        cartManager.removeFromCart(product)
     }
 }

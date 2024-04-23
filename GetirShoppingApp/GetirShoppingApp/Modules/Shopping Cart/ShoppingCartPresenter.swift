@@ -21,6 +21,7 @@ final class ShoppingCartPresenter {
     unowned var view: ShoppingCartViewControllerProtocol!
     let router: ShoppingCartRouterProtocol!
     //let interactor: ShoppingCartInteractorProtocol!
+    private let cartManager = CartManager.shared
     
     init(view: ShoppingCartViewControllerProtocol,
          router: ShoppingCartRouterProtocol
@@ -49,24 +50,24 @@ extension ShoppingCartPresenter: ShoppingCartPresenterProtocol {
     }
     
     func tappedTrash() {
-        CartManager.shared.removeAllProducts()
+        cartManager.removeAllProducts()
         view.reloadData()
     }
     
     func tappedPlaceOrder() {
-        CartManager.shared.removeAllProducts()
+        cartManager.removeAllProducts()
         router.navigate(.productListing)
     }
     
     func product(_ index: Int) -> Product? {
-        CartManager.shared.getProduct(at: index)
+        cartManager.getProduct(at: index)
     }
     
     func numberOfItems() -> Int {
-        CartManager.shared.getProductCount()
+        cartManager.getProductCount()
     }
     
     func getTotalPrice() -> String {
-        CartManager.shared.getTotalPrice()
+        cartManager.getTotalPrice()
     }
 }
