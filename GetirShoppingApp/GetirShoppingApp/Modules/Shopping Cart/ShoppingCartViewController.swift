@@ -133,10 +133,25 @@ extension ShoppingCartViewController: ShoppingCartViewControllerProtocol {
     }
     
     @objc private func placeOrderButtonTapped() {
+        let titleString = "Siparişiniz Onaylandı"
         let total = presenter.getTotalPrice()
-        let alertController = UIAlertController(title: "Siparişiniz Onaylandı", message: "\(total) tutarındaki siparişiniz onaylandı.", preferredStyle: .alert)
+        let messageString = "\(total) tutarındaki siparişiniz onaylandı."
+        let actionString = "Tamam"
         
-        let goBackToListingAction = UIAlertAction(title: "Anasayfaya dön", style: .default) { _ in
+        let attributedTitle = NSAttributedString(string: titleString, attributes: [
+            NSAttributedString.Key.font: UIFont.openSansBold(size: 16),
+            NSAttributedString.Key.foregroundColor: UIColor.primaryColor
+        ])
+        
+        let attributedMessage = NSAttributedString(string: messageString, attributes: [
+            NSAttributedString.Key.font: UIFont.openSansSemiBold(size: 14)
+        ])
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alertController.setValue(attributedTitle, forKey: "attributedTitle")
+        alertController.setValue(attributedMessage, forKey: "attributedMessage")
+        
+        let goBackToListingAction = UIAlertAction(title: actionString, style: .default) { _ in
             self.presenter.tappedPlaceOrder()
         }
         
