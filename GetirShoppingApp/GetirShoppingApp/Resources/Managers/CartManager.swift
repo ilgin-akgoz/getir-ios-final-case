@@ -33,8 +33,12 @@ final class CartManager {
     }
     
     func addToCart(_ product: Product) {
-        products.append(product)
+        if products.contains(where: { $0.id == product.id }) {
+            totalPrice += product.price ?? 0
+            return
+        }
         totalPrice += product.price ?? 0
+        products.append(product)
     }
     
     func removeFromCart(_ product: Product) {
