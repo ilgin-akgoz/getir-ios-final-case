@@ -45,7 +45,7 @@ extension ShoppingCartPresenter: ShoppingCartPresenterProtocol {
     }
     
     func tappedBackToList() {
-        router.navigate(.productListing)
+        router.navigate(.productDetail)
     }
     
     func tappedTrash() {
@@ -54,7 +54,8 @@ extension ShoppingCartPresenter: ShoppingCartPresenterProtocol {
     }
     
     func tappedPlaceOrder() {
-        //TODO: place order action, alert controller
+        CartManager.shared.removeAllProducts()
+        router.navigate(.productListing)
     }
     
     func product(_ index: Int) -> Product? {

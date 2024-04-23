@@ -133,7 +133,16 @@ extension ShoppingCartViewController: ShoppingCartViewControllerProtocol {
     }
     
     @objc private func placeOrderButtonTapped() {
-        presenter.tappedPlaceOrder()
+        let total = presenter.getTotalPrice()
+        let alertController = UIAlertController(title: "Siparişiniz Onaylandı", message: "\(total) tutarındaki siparişiniz onaylandı.", preferredStyle: .alert)
+        
+        let goBackToListingAction = UIAlertAction(title: "Anasayfaya dön", style: .default) { _ in
+            self.presenter.tappedPlaceOrder()
+        }
+        
+        alertController.addAction(goBackToListingAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     func reloadData() {

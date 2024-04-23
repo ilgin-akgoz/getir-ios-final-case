@@ -9,6 +9,7 @@ import Foundation
 
 enum ShoppingCartRoutes {
     case productListing
+    case productDetail
 }
 
 protocol ShoppingCartRouterProtocol: AnyObject {
@@ -37,8 +38,13 @@ final class ShoppingCartRouter {
 extension ShoppingCartRouter: ShoppingCartRouterProtocol {
     func navigate(_ route: ShoppingCartRoutes) {
         switch route {
-        case .productListing:
+        case .productDetail:
             viewController?.navigationController?.popViewController(animated: true)
+        case .productListing:
+            guard let productListingVC = viewController?.navigationController?.viewControllers.first(where: { $0 is ProductListingViewController }) else {
+                return
+            }
+            viewController?.navigationController?.popToViewController(productListingVC, animated: true)
         }
     }
 }

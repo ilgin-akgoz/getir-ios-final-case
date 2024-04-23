@@ -54,7 +54,9 @@ extension ProductDetailPresenter: ProductDetailPresenterProtocol {
     }
     
     func tappedShoppingCart() {
-        router.navigate(.shoppingCart)
+        if !CartManager.shared.isCartEmpty() {
+            router.navigate(.shoppingCart)
+        }
     }
     
     func tappedAddButton() {

@@ -51,4 +51,8 @@ final class CartManager {
         products.removeAll()
         totalPrice = 0
     }
+    
+    func isCartEmpty() -> Bool {
+        totalPrice == 0 ? true : false
+    }
 }

@@ -67,7 +67,9 @@ extension ProductListingPresenter: ProductListingPresenterProtocol {
     }
     
     func tappedShoppingCart() {
-        router.navigate()
+        if !CartManager.shared.isCartEmpty() {
+            router.navigate()
+        }
     }
     
     func didSelectItem(_ selectedProduct: Product) {
