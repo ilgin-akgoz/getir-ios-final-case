@@ -1,30 +1,30 @@
 //
-//  ProductCollectionViewCellPresenter.swift
+//  ProductTableViewCellPresenter.swift
 //  GetirShoppingApp
 //
-//  Created by Ilgın Akgöz on 20.04.2024.
+//  Created by Ilgın Akgöz on 23.04.2024.
 //
 
 import UIKit
 
-protocol ProductCollectionViewCellPresenterProtocol: AnyObject {
+protocol ProductTableViewCellPresenterProtocol: AnyObject {
     func load()
     func tappedAddButton()
     func tappedSubtractButton()
 }
 
-final class ProductCollectionViewCellPresenter {
-    weak var view: ProductCollectionViewCellProtocol?
+final class ProductTableViewCellPresenter {
+    weak var view: ProductTableViewCellProtocol?
     private let product: Product
     
-    init(view: ProductCollectionViewCellProtocol,
+    init(view: ProductTableViewCellProtocol,
          product: Product) {
         self.view = view
         self.product = product
     }
 }
 
-extension ProductCollectionViewCellPresenter: ProductCollectionViewCellPresenterProtocol {
+extension ProductTableViewCellPresenter: ProductTableViewCellPresenterProtocol {
     func load() {
         let url = URL(string: product.imageURL ?? "")
         

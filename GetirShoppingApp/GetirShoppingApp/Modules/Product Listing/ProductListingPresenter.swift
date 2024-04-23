@@ -51,11 +51,11 @@ extension ProductListingPresenter: ProductListingPresenterProtocol {
     }
     
     func suggestedNumberOfItems() -> Int {
-        return suggestedProducts.count
+        suggestedProducts.count
     }
     
     func numberOfItems() -> Int {
-        return products.count
+        products.count
     }
     
     func suggestedProduct(_ index: Int) -> Product? {

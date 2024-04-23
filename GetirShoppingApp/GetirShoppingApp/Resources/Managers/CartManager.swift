@@ -12,25 +12,38 @@ final class CartManager {
 
     private init() {}
     
+    private var products: [Product] = []
+    
     private var totalPrice: Double = 0 {
         didSet {
             NotificationCenter.default.post(name: .cartUpdatedNotification, object: nil)
         }
     }
     
-    func getTotalPrice() -> Double {
-        return totalPrice
+    func getTotalPrice() -> String {
+        "₺\(totalPrice)"
     }
     
-    func addToCart(productPrice: Double) {
-        totalPrice += productPrice
+    func getProductCount() -> Int {
+        products.count
     }
     
-    func removeFromCart(productPrice: Double) {
-        totalPrice -= productPrice
-        
-        if totalPrice < 0 {
-            totalPrice = 0
+    func getProduct(at index: Int) -> Product {
+        products[index]
+    }
+    
+    func addToCart(_ product: Product) {
+        products.append(product)
+        totalPrice += product.price ?? 0
+    }
+    
+    func removeFromCart(_ product: Product) {
+        if let index = products.firstIndex(where: { $0.id == product.id }) {
+            let removedProduct = products.remove(at: index)
+            totalPrice -= removedProduct.price ?? 0
+            if totalPrice < 0 {
+                totalPrice = 0
+            }
         }
     }
 }

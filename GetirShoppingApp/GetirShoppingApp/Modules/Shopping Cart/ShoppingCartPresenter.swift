@@ -10,16 +10,18 @@ import Foundation
 protocol ShoppingCartPresenterProtocol: AnyObject {
     func viewDidLoad()
     func tappedBackToList()
-    func tappedAddToCart()
     func tappedTrash()
     func tappedPlaceOrder()
+    func product(_ index: Int) -> Product?
+    func numberOfItems() -> Int
+    func getTotalPrice() -> String
 }
 
 final class ShoppingCartPresenter {
     unowned var view: ShoppingCartViewControllerProtocol!
     let router: ShoppingCartRouterProtocol!
     //let interactor: ShoppingCartInteractorProtocol!
-
+    
     init(view: ShoppingCartViewControllerProtocol,
          router: ShoppingCartRouterProtocol
          //interactor: ShoppingCartInteractorProtocol,
@@ -37,18 +39,15 @@ extension ShoppingCartPresenter: ShoppingCartPresenterProtocol {
         view.setTitle("Sepetim")
         view.setBackgroundColor(.white)
         view.setupNavigationBarButtonItems()
+        view.setupTableView()
         view.setupTabBar()
+        view.reloadData()
     }
     
     func tappedBackToList() {
         router.navigate(.productListing)
     }
     
-    func tappedAddToCart() {
-        //TODO: add button action
-        print("Added to cart!")
-    }
-     
     func tappedTrash() {
         //TODO: trash button action
         print("Deleted all items!")
@@ -56,5 +55,17 @@ extension ShoppingCartPresenter: ShoppingCartPresenterProtocol {
     
     func tappedPlaceOrder() {
         //TODO: place order action, alert controller
+    }
+    
+    func product(_ index: Int) -> Product? {
+        CartManager.shared.getProduct(at: index)
+    }
+    
+    func numberOfItems() -> Int {
+        CartManager.shared.getProductCount()
+    }
+    
+    func getTotalPrice() -> String {
+        CartManager.shared.getTotalPrice()
     }
 }

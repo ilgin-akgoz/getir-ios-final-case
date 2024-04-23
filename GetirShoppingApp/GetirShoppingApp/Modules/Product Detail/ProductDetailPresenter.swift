@@ -50,7 +50,7 @@ extension ProductDetailPresenter: ProductDetailPresenterProtocol {
     }
     
     func tappedAddToCart() {
-        CartManager.shared.addToCart(productPrice: product.price ?? 0)
+        CartManager.shared.addToCart(product)
     }
     
     func tappedShoppingCart() {
@@ -58,11 +58,11 @@ extension ProductDetailPresenter: ProductDetailPresenterProtocol {
     }
     
     func tappedAddButton() {
-        CartManager.shared.addToCart(productPrice: product.price ?? 0)
+        CartManager.shared.addToCart(product)
     }
     
     func tappedSubtractButton() {
-        CartManager.shared.removeFromCart(productPrice: product.price ?? 0)
+        CartManager.shared.removeFromCart(product)
     }
 }
 

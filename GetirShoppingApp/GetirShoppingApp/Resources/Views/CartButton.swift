@@ -24,9 +24,9 @@ final class CartButton: UIButton {
         return label
     }()
     
-    var amount: Double = 0 {
+    var amount: String = "" {
         didSet {
-            amountLabel.text = "₺\(amount)"
+            amountLabel.text = amount
         }
     }
     

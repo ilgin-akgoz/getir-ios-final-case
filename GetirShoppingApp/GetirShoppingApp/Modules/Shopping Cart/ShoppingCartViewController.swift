@@ -11,15 +11,20 @@ protocol ShoppingCartViewControllerProtocol: AnyObject {
     func setTitle(_ title: String)
     func setBackgroundColor(_ color: UIColor)
     func setupNavigationBarButtonItems()
+    func setupTableView()
     func setupTabBar()
+    func reloadData()
 }
 
 final class ShoppingCartViewController: UIViewController {
+    var tableView: UITableView!
     var presenter: ShoppingCartPresenterProtocol!
+    private var amountLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.viewDidLoad()
+        registerObservers()
     }
 }
 
@@ -40,6 +45,24 @@ extension ShoppingCartViewController: ShoppingCartViewControllerProtocol {
         let rightButton = UIBarButtonItem(image: UIImage(named: "right_controls"), style: .plain, target: self, action: #selector(trashButtonTapped))
         rightButton.tintColor = .white
         self.navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    func setupTableView() {
+        tableView = UITableView(frame: view.bounds, style: .plain)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .backgroundColor
+        tableView.register(ProductTableViewCell.self, forCellReuseIdentifier: "ProductCell")
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
     }
     
     func setupTabBar() {
@@ -65,7 +88,7 @@ extension ShoppingCartViewController: ShoppingCartViewControllerProtocol {
             return button
         }()
         
-        let amountLabel: UILabel = {
+        amountLabel = {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.text = "₺0,00"
@@ -97,6 +120,8 @@ extension ShoppingCartViewController: ShoppingCartViewControllerProtocol {
             amountLabel.widthAnchor.constraint(equalToConstant: 116),
             amountLabel.heightAnchor.constraint(equalToConstant: 50),
         ])
+        
+        amountLabel.text = presenter.getTotalPrice()
     }
     
     @objc private func backToListButtonTapped() {
@@ -109,5 +134,51 @@ extension ShoppingCartViewController: ShoppingCartViewControllerProtocol {
     
     @objc private func placeOrderButtonTapped() {
         presenter.tappedPlaceOrder()
+    }
+    
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unregisterObservers()
+    }
+    
+    private func registerObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(totalPriceDidChange(_:)), name: .cartUpdatedNotification, object: nil)
+    }
+    
+    private func unregisterObservers() {
+        NotificationCenter.default.removeObserver(self, name: .cartUpdatedNotification, object: nil)
+    }
+    
+    @objc private func totalPriceDidChange(_ notification: Notification) {
+        let amount = presenter.getTotalPrice()
+        amountLabel.text = amount
+    }
+}
+
+extension ShoppingCartViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        presenter.numberOfItems()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        if let product = presenter.product(indexPath.row) {
+            cell.cellPresenter = ProductTableViewCellPresenter(view: cell, product: product)
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
     }
 }
