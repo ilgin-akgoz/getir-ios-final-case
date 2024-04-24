@@ -24,7 +24,12 @@ final class ShoppingCartViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.viewDidLoad()
-        registerObservers()
+        NotificationCenter.default.addObserver(self, selector: #selector(totalPriceDidChange), name: .cartUpdatedNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: .cartUpdatedNotification, object: nil)
     }
 }
 
@@ -165,21 +170,8 @@ extension ShoppingCartViewController: ShoppingCartViewControllerProtocol {
             self.tableView.reloadData()
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        unregisterObservers()
-    }
-    
-    private func registerObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(totalPriceDidChange(_:)), name: .cartUpdatedNotification, object: nil)
-    }
-    
-    private func unregisterObservers() {
-        NotificationCenter.default.removeObserver(self, name: .cartUpdatedNotification, object: nil)
-    }
-    
-    @objc private func totalPriceDidChange(_ notification: Notification) {
+
+    @objc private func totalPriceDidChange() {
         let amount = presenter.getTotalPrice()
         amountLabel.text = amount
     }

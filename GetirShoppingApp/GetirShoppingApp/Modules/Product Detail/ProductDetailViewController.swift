@@ -46,6 +46,8 @@ extension ProductDetailViewController: ProductDetailViewControllerProtocol {
         
         let nameLabel = UILabel()
         nameLabel.text = name
+        nameLabel.numberOfLines = 0
+        nameLabel.textAlignment = .center
         nameLabel.textColor = .textDarkColor
         nameLabel.font = .openSansSemiBold(size: 16)
         
