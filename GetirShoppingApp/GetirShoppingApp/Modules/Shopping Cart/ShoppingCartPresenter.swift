@@ -20,17 +20,14 @@ protocol ShoppingCartPresenterProtocol: AnyObject {
 final class ShoppingCartPresenter {
     unowned var view: ShoppingCartViewControllerProtocol!
     let router: ShoppingCartRouterProtocol!
-    //let interactor: ShoppingCartInteractorProtocol!
     private let cartManager = CartManager.shared
     
     init(view: ShoppingCartViewControllerProtocol,
          router: ShoppingCartRouterProtocol
-         //interactor: ShoppingCartInteractorProtocol,
         )
     {
         self.view = view
         self.router = router
-        //self.interactor = interactor
     }
     
 }
