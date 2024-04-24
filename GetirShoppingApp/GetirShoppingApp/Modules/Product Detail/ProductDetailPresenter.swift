@@ -75,7 +75,7 @@ extension ProductDetailPresenter: ProductDetailInteractorOutputProtocol {
             self.view.setupStackView(image: image,
                                      price: self.product.priceText ?? "₺0,00",
                                      name: self.product.name ?? "Product Name",
-                                     attribute: self.product.shortDescription ?? "Attribute")
+                                     attribute: self.product.shortDescription ?? self.product.attribute ?? "Attribute")
         }
     }
 }

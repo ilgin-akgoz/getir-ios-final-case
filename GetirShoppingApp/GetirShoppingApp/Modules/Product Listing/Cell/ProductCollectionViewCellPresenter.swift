@@ -42,7 +42,7 @@ extension ProductCollectionViewCellPresenter: ProductCollectionViewCellPresenter
 
         self.view?.setPriceLabel(product.priceText ?? "₺0,00")
         self.view?.setNameLabel(product.name ?? "Product Name")
-        self.view?.setAttributeLabel(product.shortDescription ?? "Attribute")
+        self.view?.setAttributeLabel(product.shortDescription ?? product.attribute ?? "Attribute")
     }
     
     func tappedAddButton() {
