@@ -11,6 +11,9 @@ final class CartButton: UIButton {
     let button: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+        button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         return button
     }()
     
@@ -21,6 +24,9 @@ final class CartButton: UIButton {
         label.font = .openSansBold(size: 14)
         label.backgroundColor = UIColor(red: 0.95, green: 0.94, blue: 0.98, alpha: 1.00)
         label.textColor = .primaryColor
+        label.layer.cornerRadius = 8
+        label.layer.masksToBounds = true
+        label.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         return label
     }()
     
