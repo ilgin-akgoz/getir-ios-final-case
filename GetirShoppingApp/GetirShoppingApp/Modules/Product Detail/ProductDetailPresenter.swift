@@ -43,7 +43,7 @@ extension ProductDetailPresenter: ProductDetailPresenterProtocol {
         view.setupNavigationBarButtonItem()
         view.setupTabBar()
         
-        interactor.fetchImage(url: URL(string: product.imageURL ?? ""))
+        interactor.fetchImage(url: URL(string: product.imageURL ?? product.squareThumbnailURL ?? ""))
     }
     
     func tappedBackToList() {

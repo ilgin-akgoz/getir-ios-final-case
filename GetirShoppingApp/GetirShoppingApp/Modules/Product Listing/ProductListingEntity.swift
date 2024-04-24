@@ -26,6 +26,7 @@ struct Product: Decodable {
     let price: Double?
     let priceText: String?
     let shortDescription: String?
+    let squareThumbnailURL: String?
 }
 
 // Horizontal scroll

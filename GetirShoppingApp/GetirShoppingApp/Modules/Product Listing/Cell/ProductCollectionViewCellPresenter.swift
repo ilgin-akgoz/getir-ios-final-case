@@ -27,7 +27,7 @@ final class ProductCollectionViewCellPresenter {
 
 extension ProductCollectionViewCellPresenter: ProductCollectionViewCellPresenterProtocol {
     func load() {
-        let url = URL(string: product.imageURL ?? "")
+        let url = URL(string: product.imageURL ?? product.squareThumbnailURL ?? "")
         
         ImageManager.shared.fetchImage(url: url) { result in
             switch result {

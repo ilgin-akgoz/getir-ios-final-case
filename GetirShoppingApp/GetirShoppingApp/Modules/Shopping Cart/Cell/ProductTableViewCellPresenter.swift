@@ -27,7 +27,7 @@ final class ProductTableViewCellPresenter {
 
 extension ProductTableViewCellPresenter: ProductTableViewCellPresenterProtocol {
     func load() {
-        let url = URL(string: product.imageURL ?? "")
+        let url = URL(string: product.imageURL ?? product.squareThumbnailURL ?? "")
         
         ImageManager.shared.fetchImage(url: url) { result in
             switch result {
